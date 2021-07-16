@@ -12,4 +12,10 @@
     <string name="actor2_name">Холт Маккэллани</string>
     <string name="actor3_image">actor3 image</string>
     <string name="actor3_name">Джош Харнетт</string>
+    <string name="popular_now">Популярное сейчас</string>
+    <string name="drama">драма</string>
+    <string name="comedy">комедии</string>
+    <string name="arthouse">артхаус</string>
+    <string name="melodrama">мелодрамы</string>
+    <string name="main_empty_message">nothing here</string>
 </resources>
