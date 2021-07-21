@@ -1,14 +1,18 @@
-package ru.avtoropova.tetahomework1
+package ru.avtoropova.tetahomework1.fragments
 
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import ru.avtoropova.tetahomework1.R
+import ru.avtoropova.tetahomework1.adapters.MyActorsAdapter
+import ru.avtoropova.tetahomework1.adapters.MyTagsAdapter
 import ru.avtoropova.tetahomework1.data.dto.MovieDto
 
 class MovieDetailsFragment : Fragment() {
@@ -23,9 +27,15 @@ class MovieDetailsFragment : Fragment() {
         val movieTitle = view.findViewById<TextView>(R.id.tv_movie_title)
         val moviePoster = view.findViewById<ImageView>(R.id.iv_movie_poster)
         val movieDescription = view.findViewById<TextView>(R.id.tv_movie_description)
+        val ageRestriction = view.findViewById<TextView>(R.id.tv_age_restriction)
+        val rvActors = view.findViewById<RecyclerView>(R.id.rv_actors)
+        val actorsAdapter = movie?.actors?.let { MyActorsAdapter(it) }
         movieTitle.text = movie?.title
         movieDescription.text = movie?.description
         moviePoster.load(movie?.imageUrl)
+        ageRestriction.text = movie?.ageRestriction.toString() + "+"
+        rvActors.adapter = actorsAdapter
+        rvActors.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         return view
     }
 

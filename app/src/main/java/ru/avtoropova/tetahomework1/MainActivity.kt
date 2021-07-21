@@ -3,13 +3,11 @@ package ru.avtoropova.tetahomework1
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import ru.avtoropova.tetahomework1.fragments.MoviesListFragment
+import ru.avtoropova.tetahomework1.fragments.ProfileFragment
 
-class MainActivity : AppCompatActivity(), MoviesListFragmentListener {
+class MainActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,29 +23,25 @@ class MainActivity : AppCompatActivity(), MoviesListFragmentListener {
         bnv.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {
-                    Toast.makeText(this, "home", Toast.LENGTH_SHORT).show()
+                    findViewById<View>(R.id.home_underline).visibility = View.VISIBLE
+                    findViewById<View>(R.id.profile_underline).visibility = View.INVISIBLE
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_container, MoviesListFragment()).commit()
+                        .replace(R.id.main_container, MoviesListFragment()).addToBackStack(null)
+                        .commit()
                     true
                 }
                 R.id.profile -> {
-                    Toast.makeText(this, "profile", Toast.LENGTH_SHORT).show()
+                    findViewById<View>(R.id.home_underline).visibility = View.INVISIBLE
+                    findViewById<View>(R.id.profile_underline).visibility = View.VISIBLE
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_container, ProfileFragment()).commit()
+                        .replace(R.id.main_container, ProfileFragment()).addToBackStack(null)
+                        .commit()
                     true
                 }
                 else -> false
             }
         }
-
-
     }
-
-    override fun onMovieItemClicked() {
-        TODO("Not yet implemented")
-    }
-
-
 }
 
 

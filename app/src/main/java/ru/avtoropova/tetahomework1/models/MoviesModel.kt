@@ -1,4 +1,4 @@
-package ru.avtoropova.tetahomework1
+package ru.avtoropova.tetahomework1.models
 
 import ru.avtoropova.tetahomework1.features.movies.MoviesDataSource
 
