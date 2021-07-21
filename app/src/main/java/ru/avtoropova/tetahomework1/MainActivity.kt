@@ -7,40 +7,44 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ru.avtoropova.tetahomework1.features.movies.MoviesDataSourceImpl
-import ru.avtoropova.tetahomework1.features.tags.TagsDataSourceImpl
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var moviesModel: MoviesModel
-    private lateinit var tagsModel: TagsModel
+class MainActivity : AppCompatActivity(), MoviesListFragmentListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        initDataSource()
-        val recycler = findViewById<RecyclerView>(R.id.rv_movies)
-        val movies = moviesModel.getMovies()
-        val adapter =
-            MyMoviesAdapter(this) { Toast.makeText(this, it.title, Toast.LENGTH_SHORT).show() }
-        adapter.submitList(movies)
-        recycler.adapter = adapter
-        recycler.layoutManager = GridLayoutManager(this, 2)
+        supportFragmentManager.beginTransaction()
 
-        val tagsRecycler = findViewById<RecyclerView>(R.id.rv_tags)
-        val tags = tagsModel.getTags()
-        val tagsAdapter =
-            MyTagsAdapter(this, tags) { Toast.makeText(this, it.tag, Toast.LENGTH_SHORT).show() }
-        tagsRecycler.adapter = tagsAdapter
-        tagsRecycler.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+            .add(R.id.main_container, MoviesListFragment())
+            .commit()
+
+        val bnv = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bnv.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> {
+                    Toast.makeText(this, "home", Toast.LENGTH_SHORT).show()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.main_container, MoviesListFragment()).commit()
+                    true
+                }
+                R.id.profile -> {
+                    Toast.makeText(this, "profile", Toast.LENGTH_SHORT).show()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.main_container, ProfileFragment()).commit()
+                    true
+                }
+                else -> false
+            }
+        }
 
 
     }
 
-    private fun initDataSource() {
-        moviesModel = MoviesModel(MoviesDataSourceImpl())
-        tagsModel = TagsModel(TagsDataSourceImpl())
+    override fun onMovieItemClicked() {
+        TODO("Not yet implemented")
     }
 
 
