@@ -10,11 +10,9 @@ import ru.avtoropova.tetahomework1.data.dto.MovieDto
 import ru.avtoropova.tetahomework1.data.dto.TagDto
 
 class MyTagsAdapter(
-    context: Context,
     private val tags: List<TagDto>,
     private val mListener: (TagDto) -> Unit
 ) : RecyclerView.Adapter<MyTagsAdapter.MyTagsViewHolder>() {
-    private val inflater: LayoutInflater = LayoutInflater.from(context)
 
     class MyTagsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val tagName: TextView = view.findViewById(R.id.tvTag)
@@ -24,7 +22,7 @@ class MyTagsAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyTagsViewHolder {
-        return MyTagsViewHolder(inflater.inflate(R.layout.item_tag, parent, false))
+        return MyTagsViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_tag, parent, false))
     }
 
     override fun onBindViewHolder(holder: MyTagsViewHolder, position: Int) {
