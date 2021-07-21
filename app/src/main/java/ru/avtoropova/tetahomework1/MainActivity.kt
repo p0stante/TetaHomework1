@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         val recycler = findViewById<RecyclerView>(R.id.rv_movies)
         val movies = moviesModel.getMovies()
         val adapter =
-            MyMoviesAdapter(this) { Toast.makeText(this, it.title, Toast.LENGTH_SHORT).show() }
+            MyMoviesAdapter{ Toast.makeText(this, it.title, Toast.LENGTH_SHORT).show() }
         adapter.submitList(movies)
         recycler.adapter = adapter
         recycler.layoutManager = GridLayoutManager(this, 2)
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         val tagsRecycler = findViewById<RecyclerView>(R.id.rv_tags)
         val tags = tagsModel.getTags()
         val tagsAdapter =
-            MyTagsAdapter(this, tags) { Toast.makeText(this, it.tag, Toast.LENGTH_SHORT).show() }
+            MyTagsAdapter(tags) { Toast.makeText(this, it.tag, Toast.LENGTH_SHORT).show() }
         tagsRecycler.adapter = tagsAdapter
         tagsRecycler.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
 
