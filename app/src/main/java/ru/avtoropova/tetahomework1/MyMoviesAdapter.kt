@@ -11,12 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import ru.avtoropova.tetahomework1.data.dto.MovieDto
 
-class MyMoviesAdapter(context: Context, private val mListener: (MovieDto) -> Unit) :
+class MyMoviesAdapter(private val mListener: (MovieDto) -> Unit) :
     ListAdapter<MovieDto, MyMovieViewHolder>(MoviesCallback()) {
-    private val inflater: LayoutInflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyMovieViewHolder {
-        return MyMovieViewHolder(inflater.inflate(R.layout.item_movie, parent, false))
+        return MyMovieViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false))
     }
 
     override fun onBindViewHolder(holder: MyMovieViewHolder, position: Int) {
