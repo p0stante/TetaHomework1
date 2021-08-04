@@ -1,7 +1,6 @@
-package ru.avtoropova.tetahomework1.features.tags
+package ru.avtoropova.tetahomework1.model.features.tags
 
-import ru.avtoropova.tetahomework1.data.dto.MovieDto
-import ru.avtoropova.tetahomework1.data.dto.TagDto
+import ru.avtoropova.tetahomework1.model.dto.TagDto
 
 class TagsDataSourceImpl : TagsDataSource {
     override fun getTags() = listOf(

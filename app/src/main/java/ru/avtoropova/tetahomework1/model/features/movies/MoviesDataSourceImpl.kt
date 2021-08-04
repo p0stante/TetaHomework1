@@ -1,7 +1,7 @@
-package ru.avtoropova.tetahomework1.features.movies
+package ru.avtoropova.tetahomework1.model.features.movies
 
-import ru.avtoropova.tetahomework1.data.dto.ActorDto
-import ru.avtoropova.tetahomework1.data.dto.MovieDto
+import ru.avtoropova.tetahomework1.model.dto.ActorDto
+import ru.avtoropova.tetahomework1.model.dto.MovieDto
 
 class MoviesDataSourceImpl : MoviesDataSource {
     override fun getMovies() = listOf(

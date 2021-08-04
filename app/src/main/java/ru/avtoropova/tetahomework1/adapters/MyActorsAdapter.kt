@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import ru.avtoropova.tetahomework1.R
-import ru.avtoropova.tetahomework1.data.dto.ActorDto
+import ru.avtoropova.tetahomework1.model.dto.ActorDto
 
 class MyActorsAdapter(private val actors: ArrayList<ActorDto>) :
     RecyclerView.Adapter<MyActorsAdapter.MyActorsViewHolder>() {

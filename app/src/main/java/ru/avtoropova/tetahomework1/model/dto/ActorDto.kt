@@ -1,4 +1,4 @@
-package ru.avtoropova.tetahomework1.data.dto
+package ru.avtoropova.tetahomework1.model.dto
 
 import android.os.Parcel
 import android.os.Parcelable
@@ -10,8 +10,7 @@ data class ActorDto(
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString()
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)

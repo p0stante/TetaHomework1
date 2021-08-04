@@ -1,4 +1,4 @@
-package ru.avtoropova.tetahomework1.fragments
+package ru.avtoropova.tetahomework1.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,10 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import ru.avtoropova.tetahomework1.R
 import ru.avtoropova.tetahomework1.adapters.MyActorsAdapter
-import ru.avtoropova.tetahomework1.adapters.MyTagsAdapter
-import ru.avtoropova.tetahomework1.data.dto.MovieDto
+import ru.avtoropova.tetahomework1.model.dto.MovieDto
 
 class MovieDetailsFragment : Fragment() {
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -44,7 +45,7 @@ class MovieDetailsFragment : Fragment() {
             val args = Bundle()
             args.putParcelable("MOVIE", movie)
             val fragment = MovieDetailsFragment()
-            fragment.setArguments(args)
+            fragment.arguments = args
             return fragment
 
         }

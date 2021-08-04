@@ -1,10 +1,9 @@
-package ru.avtoropova.tetahomework1
+package ru.avtoropova.tetahomework1.adapters
 
-import android.graphics.Movie
 import androidx.recyclerview.widget.DiffUtil
-import ru.avtoropova.tetahomework1.data.dto.MovieDto
+import ru.avtoropova.tetahomework1.model.dto.MovieDto
 
-class MoviesCallback() :
+class MoviesCallback :
     DiffUtil.ItemCallback<MovieDto>() {
     override fun areItemsTheSame(oldItem: MovieDto, newItem: MovieDto): Boolean {
         return oldItem.title == newItem.title

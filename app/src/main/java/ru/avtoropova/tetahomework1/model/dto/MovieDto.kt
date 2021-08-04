@@ -1,4 +1,4 @@
-package ru.avtoropova.tetahomework1.data.dto
+package ru.avtoropova.tetahomework1.model.dto
 
 import android.os.Parcel
 import android.os.Parcelable
@@ -19,8 +19,7 @@ data class MovieDto(
         parcel.readInt(),
         parcel.readString(),
         parcel.createTypedArrayList(ActorDto)
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(title)

@@ -1,11 +1,12 @@
-package ru.avtoropova.tetahomework1
+package ru.avtoropova.tetahomework1.adapters
 
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import ru.avtoropova.tetahomework1.data.dto.MovieDto
+import ru.avtoropova.tetahomework1.R
+import ru.avtoropova.tetahomework1.model.dto.MovieDto
 
 class MyMovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val poster: ImageView = view.findViewById(R.id.ivHeader)

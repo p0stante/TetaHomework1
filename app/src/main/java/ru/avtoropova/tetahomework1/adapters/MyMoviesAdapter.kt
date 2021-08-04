@@ -3,10 +3,8 @@ package ru.avtoropova.tetahomework1.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import ru.avtoropova.tetahomework1.MoviesCallback
-import ru.avtoropova.tetahomework1.MyMovieViewHolder
 import ru.avtoropova.tetahomework1.R
-import ru.avtoropova.tetahomework1.data.dto.MovieDto
+import ru.avtoropova.tetahomework1.model.dto.MovieDto
 
 class MyMoviesAdapter(private val mListener: (MovieDto) -> Unit) :
     ListAdapter<MovieDto, MyMovieViewHolder>(MoviesCallback()) {
@@ -22,5 +20,6 @@ class MyMoviesAdapter(private val mListener: (MovieDto) -> Unit) :
         holder.bind(item)
         holder.itemView.setOnClickListener { item?.let { it -> mListener.invoke(it) } }
     }
+
 
 }
