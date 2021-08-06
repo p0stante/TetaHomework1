@@ -22,7 +22,6 @@ class MovieDetailsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //val context=context
         val movie: MovieDto? = arguments?.getParcelable("MOVIE")
         val view = inflater.inflate(R.layout.fragment_movie_details, container, false)
         val movieTitle = view.findViewById<TextView>(R.id.tv_movie_title)
@@ -40,14 +39,4 @@ class MovieDetailsFragment : Fragment() {
         return view
     }
 
-    companion object {
-        fun newInstance(movie: MovieDto): MovieDetailsFragment {
-            val args = Bundle()
-            args.putParcelable("MOVIE", movie)
-            val fragment = MovieDetailsFragment()
-            fragment.arguments = args
-            return fragment
-
-        }
-    }
 }

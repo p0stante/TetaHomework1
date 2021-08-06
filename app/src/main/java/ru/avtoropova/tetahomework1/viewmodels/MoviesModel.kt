@@ -12,7 +12,7 @@ import ru.avtoropova.tetahomework1.view.fragments.MoviesListFragment
 typealias MyViewState = MoviesListFragment.ViewState
 
 class MoviesModel : ViewModel() {
-    val repo = MoviesDataSourceImpl()
+    private val repo = MoviesDataSourceImpl()
 
     private val _movies = MutableLiveData<List<MovieDto>>()
     val movies: LiveData<List<MovieDto>>
@@ -21,17 +21,21 @@ class MoviesModel : ViewModel() {
     val viewState: LiveData<MyViewState> get() = _viewState
     private val _viewState = MutableLiveData<MyViewState>()
 
+    init {
+        getMovies()
+    }
+
     fun getMoviesShuffle() {
         viewModelScope.launch {
             val movies = repo.getMovies().shuffled()
-            _movies.value = movies
+            _movies.postValue(movies)
         }
     }
 
-    fun getMovies() {
+    private fun getMovies() {
         viewModelScope.launch {
             val movies = repo.getMovies()
-            _movies.value = movies
+            _movies.postValue(movies)
         }
     }
 }
