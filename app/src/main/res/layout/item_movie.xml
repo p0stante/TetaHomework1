@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_movie_root"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    tools:context=".view.MainActivity"
+    android:background="@color/card_bg"
+    android:layout_marginBottom="50dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/ivHeader"
+            android:layout_height="216dp"
+            android:layout_width="150dp"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/avatars" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/main_title_top_offset"
+        android:layout_marginEnd="@dimen/main_side_offset"
+        android:textSize="@dimen/size_movies_list_title"
+        android:textColor="@color/black"
+        android:text=""
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/cvHeader"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/title1" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/main_description_top_offset"
+        android:layout_marginEnd="@dimen/main_side_offset"
+        android:maxLines="5"
+        android:ellipsize="end"
+        android:textSize="@dimen/size_movies_list_description"
+        android:textColor="@color/black"
+        android:text=""
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        android:layout_marginBottom="@dimen/main_description_top_offset"
+        tools:text="@string/movie_description" />
+
+    <ImageView
+        android:id="@+id/ivStar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_star_black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivStar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_star_black"
+        app:layout_constraintStart_toStartOf="@id/ivStar1"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivStar3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_star_black"
+        app:layout_constraintStart_toStartOf="@id/ivStar2"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivStar4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_star_black"
+        app:layout_constraintStart_toStartOf="@id/ivStar3"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivStar5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_star_white"
+        app:layout_constraintStart_toStartOf="@id/ivStar4"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="40dp" />
+
+    <TextView
+        android:id="@+id/tvAgeRestriction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/main_side_offset"
+        android:layout_marginEnd="@dimen/main_side_offset"
+        android:gravity="center"
+        android:textSize="@dimen/size_movies_list_description"
+        android:textColor="@color/black"
+        android:text=""
+        android:background="@drawable/age_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="@string/_18" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

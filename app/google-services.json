@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1043558685013",
+    "project_id": "tetahomework1",
+    "storage_bucket": "tetahomework1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1043558685013:android:fb6c31628d0e38acf7b7dc",
+        "android_client_info": {
+          "package_name": "ru.avtoropova.tetahomework1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1043558685013-n5hir54b66nbfhcnknjj8log4400pptk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuZO9vIR88s_gxZRaWgD-hjTQ0G_ER2YY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1043558685013-n5hir54b66nbfhcnknjj8log4400pptk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
