@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import ru.avtoropova.tetahomework1.R
-import ru.avtoropova.tetahomework1.model.dto.MovieDto
+import ru.avtoropova.tetahomework1.model.room.entities.Movie
 
-class MyMoviesAdapter(private val mListener: (MovieDto) -> Unit) :
-    ListAdapter<MovieDto, MyMovieViewHolder>(MoviesCallback()) {
+class MyMoviesAdapter(private val mListener: (Movie) -> Unit) :
+    ListAdapter<Movie, MyMovieViewHolder>(MoviesCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyMovieViewHolder {
         return MyMovieViewHolder(

@@ -11,8 +11,8 @@ import com.google.firebase.messaging.RemoteMessage
 import ru.avtoropova.tetahomework1.R
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
-    val CHANNEL_ID = "0"
-    val notificationId = 0
+    private val channelId = "0"
+    private val notificationId = 0
 
     override fun onMessageReceived(p0: RemoteMessage) {
         super.onMessageReceived(p0)
@@ -22,7 +22,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     private fun sendNotification(message: String?) {
         createNotificationChannel()
 
-        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+        val builder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(R.mipmap.ic_launcher)
             .setContentTitle(getString(R.string.app_name))
             .setContentText(message)
@@ -36,7 +36,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             val name = getString(R.string.channel_name)
             val descriptionText = getString(R.string.channel_description)
             val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
+            val channel = NotificationChannel(channelId, name, importance).apply {
                 description = descriptionText
             }
             val notificationManager: NotificationManager =

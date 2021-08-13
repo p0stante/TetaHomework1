@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import ru.avtoropova.tetahomework1.R
-import ru.avtoropova.tetahomework1.model.dto.MovieDto
+import ru.avtoropova.tetahomework1.model.room.entities.Movie
 
 class MyMovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val poster: ImageView = view.findViewById(R.id.ivHeader)
@@ -19,7 +19,7 @@ class MyMovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val star4: ImageView = view.findViewById(R.id.ivStar4)
     private val star5: ImageView = view.findViewById(R.id.ivStar5)
 
-    fun bind(movie: MovieDto) {
+    fun bind(movie: Movie) {
         poster.load(movie.imageUrl)
         title.text = movie.title
         description.text = movie.description

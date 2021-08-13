@@ -8,14 +8,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import ru.avtoropova.tetahomework1.R
-import ru.avtoropova.tetahomework1.model.dto.ActorDto
+import ru.avtoropova.tetahomework1.model.room.entities.Actor
 
-class MyActorsAdapter(private val actors: ArrayList<ActorDto>) :
+class MyActorsAdapter(private val actors: List<Actor>?) :
     RecyclerView.Adapter<MyActorsAdapter.MyActorsViewHolder>() {
     class MyActorsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val name: TextView = view.findViewById(R.id.tv_actor)
         private val image: ImageView = view.findViewById(R.id.iv_actor)
-        fun bind(actor: ActorDto) {
+        fun bind(actor: Actor) {
             name.text = actor.name
             image.load(actor.imageUrl)
         }
@@ -31,9 +31,11 @@ class MyActorsAdapter(private val actors: ArrayList<ActorDto>) :
     }
 
     override fun onBindViewHolder(holder: MyActorsViewHolder, position: Int) {
-        val item = actors[position]
-        holder.bind(item)
+        val item = actors?.get(position)
+        if (item != null) {
+            holder.bind(item)
+        }
     }
 
-    override fun getItemCount(): Int = actors.size
+    override fun getItemCount(): Int = actors?.size ?: 0
 }

@@ -11,9 +11,6 @@
         <action
             android:id="@+id/action_home_to_movieDetailsFragment"
             app:destination="@id/movieDetails">
-            <argument
-                android:name="movieArg"
-                app:argType="ru.avtoropova.tetahomework1.model.dto.MovieDto" />
         </action>
     </fragment>
     <fragment

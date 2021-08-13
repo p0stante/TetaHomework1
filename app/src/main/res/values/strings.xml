@@ -44,4 +44,5 @@
     <string name="channel_name">notification_channel</string>
     <string name="channel_description">description</string>
     <string name="msg_token_fmt">msg_token_fmt</string>
+    <string name="plus">+</string>
 </resources>
