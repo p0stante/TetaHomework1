@@ -13,7 +13,7 @@ import java.util.ArrayList
 class MyTagsAdapter(
     private val mListener: (TagDto) -> Unit
 ) : RecyclerView.Adapter<MyTagsAdapter.MyTagsViewHolder>() {
-    var data: MutableList<TagDto> = ArrayList()
+    private var data: MutableList<TagDto> = ArrayList()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyTagsViewHolder {
