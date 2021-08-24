@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import ru.avtoropova.tetahomework1.R
 import ru.avtoropova.tetahomework1.adapters.MyActorsAdapter
-import ru.avtoropova.tetahomework1.model.room.entities.MoviesWithActors
+import ru.avtoropova.tetahomework1.model.room.entities.Actor
+import ru.avtoropova.tetahomework1.model.room.entities.Movie
+import ru.avtoropova.tetahomework1.model.room.entities.Tag
 import ru.avtoropova.tetahomework1.viewmodels.MoviesModel
 
 class MovieDetailsFragment : Fragment() {
@@ -24,18 +26,24 @@ class MovieDetailsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val movie: MoviesWithActors? = moviesModel.movie.value
+        val movie: Movie? = moviesModel.movie.value
+        val tags: List<Tag>? = moviesModel.movieTags.value
+        val actors: List<Actor>? = moviesModel.actors.value
         val view = inflater.inflate(R.layout.fragment_movie_details, container, false)
         val movieTitle = view.findViewById<TextView>(R.id.tv_movie_title)
         val moviePoster = view.findViewById<ImageView>(R.id.iv_movie_poster)
         val movieDescription = view.findViewById<TextView>(R.id.tv_movie_description)
         val ageRestriction = view.findViewById<TextView>(R.id.tv_age_restriction)
+        val date = view.findViewById<TextView>(R.id.tv_date)
+        val tag = view.findViewById<TextView>(R.id.tv_movie_tag)
         val rvActors = view.findViewById<RecyclerView>(R.id.rv_actors)
-        val actorsAdapter = movie?.actors?.let { MyActorsAdapter(it) }
-        movieTitle.text = movie?.movie?.title
-        movieDescription.text = movie?.movie?.description
-        moviePoster.load(movie?.movie?.imageUrl)
-        ageRestriction.text = movie?.movie?.ageRestriction.toString() + R.string.plus
+        val actorsAdapter = actors?.let { MyActorsAdapter(it) }
+        movieTitle.text = movie?.title
+        movieDescription.text = movie?.description
+        date.text = movie?.releaseDate
+        tag.text = tags?.get(0)?.tagName
+        moviePoster.load(movie?.imageUrl)
+        ageRestriction.text = movie?.ageRestriction
         rvActors.adapter = actorsAdapter
         rvActors.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
 

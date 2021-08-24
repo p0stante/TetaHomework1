@@ -10,7 +10,7 @@ import coil.load
 import ru.avtoropova.tetahomework1.R
 import ru.avtoropova.tetahomework1.model.room.entities.Actor
 
-class MyActorsAdapter(private val actors: List<Actor>?) :
+class MyActorsAdapter(private val actors: List<Actor>) :
     RecyclerView.Adapter<MyActorsAdapter.MyActorsViewHolder>() {
     class MyActorsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val name: TextView = view.findViewById(R.id.tv_actor)
@@ -31,11 +31,9 @@ class MyActorsAdapter(private val actors: List<Actor>?) :
     }
 
     override fun onBindViewHolder(holder: MyActorsViewHolder, position: Int) {
-        val item = actors?.get(position)
-        if (item != null) {
+        val item = actors.get(position)
             holder.bind(item)
-        }
     }
 
-    override fun getItemCount(): Int = actors?.size ?: 0
+    override fun getItemCount(): Int = actors.size
 }

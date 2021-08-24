@@ -48,7 +48,7 @@ class MoviesListFragment : Fragment() {
         progressBar = view.findViewById(R.id.pb_movies)
 
         adapter = MyMoviesAdapter {
-            moviesModel.newMovieDetails(it.movieId)
+            moviesModel.newMovieDetails(it)
             findNavController().navigate(R.id.action_home_to_movieDetailsFragment)
         }
         tagsAdapter = MyTagsAdapter {
@@ -72,7 +72,7 @@ class MoviesListFragment : Fragment() {
         rvTags.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
 
         swipeLayout.setOnRefreshListener {
-            moviesModel.getMoviesShuffle()
+            moviesModel.getNextMovies()
             adapter.notifyDataSetChanged()
             rvMovies.scrollToPosition(0)
             swipeLayout.isRefreshing = false

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import ru.avtoropova.tetahomework1.R
 import ru.avtoropova.tetahomework1.model.room.entities.Movie
+import kotlin.math.roundToInt
 
 class MyMovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val poster: ImageView = view.findViewById(R.id.ivHeader)
@@ -23,8 +24,8 @@ class MyMovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         poster.load(movie.imageUrl)
         title.text = movie.title
         description.text = movie.description
-        ageRestriction.text = movie.ageRestriction.toString() + "+"
-        when (movie.rateScore) {
+        ageRestriction.text = movie.ageRestriction
+        when ((movie.rateScore / 2).roundToInt()) {
             1 -> {
                 star1.setImageResource(R.drawable.ic_star_black)
                 star2.setImageResource(R.drawable.ic_star_white)

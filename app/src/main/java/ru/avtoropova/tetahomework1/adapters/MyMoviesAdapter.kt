@@ -20,6 +20,4 @@ class MyMoviesAdapter(private val mListener: (Movie) -> Unit) :
         holder.bind(item)
         holder.itemView.setOnClickListener { item?.let { it -> mListener.invoke(it) } }
     }
-
-
 }
