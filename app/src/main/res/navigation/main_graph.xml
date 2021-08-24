@@ -21,9 +21,6 @@
         android:id="@+id/movieDetails"
         android:label="@string/movie_details"
         android:name="ru.avtoropova.tetahomework1.view.fragments.MovieDetailsFragment">
-        <argument
-            android:name="movieArg"
-            app:argType="ru.avtoropova.tetahomework1.model.dto.MovieDto" />
     </fragment>
 
 </navigation>
