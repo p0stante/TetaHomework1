@@ -40,8 +40,8 @@ class MoviesModel(application: Application) : AndroidViewModel(application) {
         getMovies()
     }
 
-    private fun fillDB() {
-        //TODO
+    private fun fillDB(movies: List<Movie>) {
+        db!!.movieDao().addMovies(movies)
     }
 
 
@@ -53,13 +53,19 @@ class MoviesModel(application: Application) : AndroidViewModel(application) {
             } catch (e: Exception) {
                 Log.d("Exception", e.toString())
             }
+            movies.value?.let { fillDB(it) }
         }
     }
 
     fun getNextMovies() {
         viewModelScope.launch {
-            val movies = retrofitRepo.getNextMovies()
-            _movies.postValue(movies)
+            try {
+                val movies = retrofitRepo.getNextMovies()
+                _movies.postValue(movies)
+            } catch (e: Exception) {
+                Log.d("Exception", e.toString())
+            }
+            movies.value?.let { fillDB(it) }
         }
     }
 
@@ -72,6 +78,14 @@ class MoviesModel(application: Application) : AndroidViewModel(application) {
                 _movieTags.postValue(actorsAndTags.tags)
             } catch (e: Exception) {
                 Log.d("ExceptionActors", e.toString())
+            }
+            actors.value?.forEach {
+                db!!.movieDao().insertActor(it)
+                db.movieDao().addMovieActor(MoviesActorsCrossRef(movie.movieId, it.actorId))
+            }
+            movieTags.value?.forEach {
+                db!!.movieDao().insertTag(it)
+                db.movieDao().addMovieTag(MoviesTagsCrossRef(movie.movieId, it.tagId))
             }
         }
     }

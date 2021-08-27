@@ -6,14 +6,12 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import ru.avtoropova.tetahomework1.model.room.dao.MovieDao
 import ru.avtoropova.tetahomework1.model.room.dao.UserDao
-import ru.avtoropova.tetahomework1.model.room.entities.Actor
-import ru.avtoropova.tetahomework1.model.room.entities.Movie
-import ru.avtoropova.tetahomework1.model.room.entities.MoviesActorsCrossRef
-import ru.avtoropova.tetahomework1.model.room.entities.User
+import ru.avtoropova.tetahomework1.model.room.entities.*
 import ru.avtoropova.tetahomework1.utils.DATABASE_NAME
 
 @Database(
-    entities = [User::class, Movie::class, Actor::class, MoviesActorsCrossRef::class],
+    entities = [User::class, Movie::class, Actor::class, MoviesActorsCrossRef::class,
+        Tag::class, MoviesTagsCrossRef::class],
     version = 1
 )
 abstract class AppDB : RoomDatabase() {

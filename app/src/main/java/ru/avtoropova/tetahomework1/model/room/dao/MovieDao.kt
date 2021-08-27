@@ -51,6 +51,34 @@ interface MovieDao {
     @Transaction
     @Query("SELECT * FROM MoviesActorsCrossRef")
     fun getMovieActorsRefs(): List<MoviesActorsCrossRef>
+
+    @Transaction
+    @Query("SELECT * FROM Movies WHERE movieId=:id")
+    fun getMovieWithTagsById(id: Long): MovieWithTags
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertTag(tag: Tag)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun addMovieTag(movieTag: MoviesTagsCrossRef): Long
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun addTags(tags: List<Tag>)
+
+    @Update
+    fun updateTag(tag: Tag)
+
+    @Delete
+    fun deleteActor(tag: Tag)
+
+    @Transaction
+    @Query("SELECT * FROM Tags")
+    fun getTags(): List<Tag>
+
+    @Transaction
+    @Query("SELECT * FROM MoviesTagsCrossRef")
+    fun getMovieTagsRefs(): List<MoviesTagsCrossRef>
+
 }
 
 
