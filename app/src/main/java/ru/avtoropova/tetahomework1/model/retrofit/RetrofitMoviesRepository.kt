@@ -21,9 +21,9 @@ class RetrofitMoviesRepository : MoviesRepoInterface {
     }
 
     var page: Int = 1
-    override suspend fun getMovies(): List<Movie> {
+    override fun getMovies(): List<Movie> = runBlocking {
         val response = apiService.getPopularMovies(page = page).movies
-        return normalizeResults(response)
+        return@runBlocking normalizeResults(response)
     }
 
     private suspend fun normalizeResults(response: List<Movie>): List<Movie> {
@@ -45,7 +45,7 @@ class RetrofitMoviesRepository : MoviesRepoInterface {
         return "18+"
     }
 
-    override suspend fun getNextMovies(): List<Movie> {
+    override fun getNextMovies(): List<Movie> {
         page++
         return getMovies()
     }
