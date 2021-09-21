@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +20,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ru.avtoropova.tetahomework1.*
 import ru.avtoropova.tetahomework1.adapters.MyMoviesAdapter
 import ru.avtoropova.tetahomework1.adapters.MyTagsAdapter
+import ru.avtoropova.tetahomework1.model.room.entities.Movie
+import ru.avtoropova.tetahomework1.utils.MyAnimator
 import ru.avtoropova.tetahomework1.viewmodels.MoviesModel
 import ru.avtoropova.tetahomework1.viewmodels.TagsModel
 
@@ -47,10 +51,14 @@ class MoviesListFragment : Fragment() {
         swipeLayout = view.findViewById(R.id.swipe_container)
         progressBar = view.findViewById(R.id.pb_movies)
 
-        adapter = MyMoviesAdapter {
-            moviesModel.newMovieDetails(it)
-            findNavController().navigate(R.id.action_home_to_movieDetailsFragment)
+        adapter = MyMoviesAdapter { movie:Movie,itemView:View->
+            val extras = FragmentNavigatorExtras(
+                view.findViewById<ImageView>(R.id.ivHeader) to "poster_${movie.movieId}",
+            )
+            moviesModel.newMovieDetails(movie)
+            findNavController().navigate(R.id.action_home_to_movieDetailsFragment,null,null,extras)
         }
+
         tagsAdapter = MyTagsAdapter {
             Toast.makeText(
                 context,
@@ -64,7 +72,14 @@ class MoviesListFragment : Fragment() {
 
         rvMovies.adapter = adapter
         rvMovies.layoutManager = GridLayoutManager(context, 2)
-
+        rvMovies.itemAnimator=MyAnimator()
+        rvMovies.apply {
+            postponeEnterTransition()
+            viewTreeObserver.addOnPreDrawListener {
+                startPostponedEnterTransition()
+                true
+            }
+        }
         tagsModel.tags.observe(viewLifecycleOwner, Observer(tagsAdapter::initData))
         tagsModel.getTags()
 

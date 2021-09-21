@@ -69,5 +69,6 @@ class MyMovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                 star5.setImageResource(R.drawable.ic_star_white)
             }
         }
+        poster.transitionName="poster_${movie.movieId}"
     }
 }
